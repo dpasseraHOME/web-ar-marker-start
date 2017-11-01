@@ -5,6 +5,8 @@ var debugText;
 function init() {
 	console.log("# init");
 
+    initGyro();
+
     debugText = document.getElementById('debugText');
 
     marker = document.getElementById('marker');
