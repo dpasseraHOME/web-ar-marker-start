@@ -19,4 +19,5 @@
   "homepage": "https://github.com/dpasseraHOME/web-ar-marker-start#readme",
   "dependencies": {
     "express": "^4.16.2"
+  }
 }
