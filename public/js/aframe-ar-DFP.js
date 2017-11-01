@@ -8255,14 +8255,21 @@ AFRAME.registerComponent('arjs-anchor', {
 		//		honor visibility
 		//////////////////////////////////////////////////////////////////////////////
 		if( _this._arAnchor.parameters.changeMatrixMode === 'modelViewMatrix' ){
-			// console.log(_this.el.object3D.visible + ' : ' + this._arAnchor.object3d.visible);
 			_this.el.object3D.visible = this._arAnchor.object3d.visible
 			// Dante added
-			if(_this.el.object3D.visible) { this.el.emit('markerFound'); }
+			if(_this.el.object3D.visible) {
+				this.el.emit('markerVisible');
+			} else {
+				this.el.emit('markerNotVisible');
+			}
 		}else if( _this._arAnchor.parameters.changeMatrixMode === 'cameraTransformMatrix' ){
 			_this.el.sceneEl.object3D.visible = this._arAnchor.object3d.visible
 		}else console.assert(false)
+
+		// Dante added
+		this.el.emit('markerTick');
 	}
+
 })
 
 //////////////////////////////////////////////////////////////////////////////

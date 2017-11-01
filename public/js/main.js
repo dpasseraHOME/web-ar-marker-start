@@ -1,6 +1,9 @@
 var gn;
 var marker;
 var debugText;
+var isMarkerFound = false;
+var isMarkerVisible = false;
+var doUseGyro = false;
 
 function init() {
 	console.log("# init");
@@ -10,7 +13,7 @@ function init() {
     debugText = document.getElementById('debugText');
 
     marker = document.getElementById('marker');
-    marker.addEventListener('markerFound', handleMarkerFound);
+    marker.addEventListener('markerVisible', handleMarkerVisible);
 }
 
 function initGyro() {
@@ -25,7 +28,35 @@ function initGyro() {
     }); 
 }
 
-function handleMarkerFound(e) {
-    console.log('* handleMarkerFound');
-    marker.removeEventListener('markerFound', handleMarkerFound);
+function handleMarkerVisible(e) {
+    console.log('* handleMarkerVisible');
+    
+    marker.removeEventListener('markerVisible', handleMarkerVisible);
+    
+    if(!isMarkerFound) {
+        isMarkerFound = true;
+        isMarkerVisible = true;
+    }
+
+    if(isMarkerVisible) {
+        doUseGyro = false;
+        marker.addEventListener('markerNotVisible', handleMarkerNotVisible);
+        marker.removeEventListener('markerTick', handleMarkerTick);
+    }
+}
+
+function handleMarkerNotVisible(e) {
+    console.log('* handleMarkerNotVisible');
+
+    if(isMarkerFound) {
+        doUseGyro = true;
+        marker.removeEventListener('markerNotVisible', handleMarkerNotVisible);
+        marker.addEventListener('markerVisible', handleMarkerVisible);
+        marker.addEventListener('markerTick', handleMarkerTick);
+    }
+}
+
+function handleMarkerTick(e) {
+    // use gyro to position camera or model
+    // console.log('.');
 }
