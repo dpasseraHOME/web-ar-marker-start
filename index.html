@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    
+		<title>Web AR MarkerStart</title>
+
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+        <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+        <script src="./js/gyronorm.complete.min.js"></script>
+        <script src="./js/aframe-ar.js"></script>
+
+        <link rel="stylesheet" href="./stylesheets/screen.css" />
+</html>
+
+<body>
+
+<html>
+
+    <a-scene embedded arjs>
+
+    	<a-assets>
+            <a-asset-item id="pokemon" src="/aframe/pikachu/scene.gltf"></a-asset-item>
+        </a-assets>
+
+	  	<a-marker preset="hiro">
+	            <a-entity gltf-model="#pokemon" scale="0.25 0.25 0.25" position="0 0.5 -1"></a-entity>
+	  	</a-marker>
+	  	<a-entity camera></a-entity>
+
+    </a-scene>
+
+</html>
+
+</body>
