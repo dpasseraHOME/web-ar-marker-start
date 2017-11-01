@@ -1,3 +1,13 @@
 body {
-  margin: 0px;
-  overflow: hidden; }
+	margin: 0px;
+	overflow: hidden;
+}
+
+#debugText
+{
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	background-color: black;
+	color: white;
+}
