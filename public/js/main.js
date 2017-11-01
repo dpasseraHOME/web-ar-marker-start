@@ -4,15 +4,6 @@ var marker;
 function init() {
 	console.log("# init");
 
-    // AFRAME.registerComponent('play-on-scan', {
-    //     init: function () {
-    //         var el = this.el;
-    //         el.sceneEl.addEventListener('markerFound', function () {
-    //             //el.setAttribute('animation-mixer', {clip: '*', loop: 'once'}); el.emit('ar-ready');
-    //         });
-    //     }
-    //  });
-
     marker = document.getElementById('marker');
 
     marker.addEventListener('markerFound', handleMarkerFound);
