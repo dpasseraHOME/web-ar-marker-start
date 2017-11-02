@@ -8264,6 +8264,12 @@ AFRAME.registerComponent('arjs-anchor', {
 			}
 		}else if( _this._arAnchor.parameters.changeMatrixMode === 'cameraTransformMatrix' ){
 			_this.el.sceneEl.object3D.visible = this._arAnchor.object3d.visible
+			// console.log(_this.el.sceneEl.object3D.visible + ' : ' + this._arAnchor.object3d.visible);
+			if(_this.el.object3D.visible) {
+				this.el.emit('markerVisible');
+			} else {
+				this.el.emit('markerNotVisible');
+			}
 		}else console.assert(false)
 
 		// Dante added
